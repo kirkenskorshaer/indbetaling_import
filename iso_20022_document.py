@@ -26,6 +26,7 @@ class Iso20022Document():
 			self.IBAN = ntfctn.find('Acct/Id/IBAN', nsmap).text
 			ntrys = ntfctn.findall('Ntry', nsmap)
 			self.TtlNetNtryAmt = Decimal(ntfctn.find('TxsSummry/TtlNtries/TtlNetNtryAmt', nsmap).text)
+			self.NbOfNtries = int(ntfctn.find('TxsSummry/TtlNtries/NbOfNtries', nsmap).text)
 		else:
 			raise ValueError('unknown namespace ' + xml_tag)
 

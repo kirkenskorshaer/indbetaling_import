@@ -25,11 +25,12 @@ class Iso20022Ntry():
 			if MsgNmId is not None:
 				bank_id = MsgNmId.text
 
-		if bank_id is None:
-			NtryRef = ntry.find("NtryRef", nsmap)
-			if NtryRef is not None:
-				NtryRef.getparent().remove(NtryRef)
+		NtryRef = ntry.find("NtryRef", nsmap)
+		if NtryRef is not None:
+			self.NtryRef = int(NtryRef.text)
+			NtryRef.getparent().remove(NtryRef)
 
+		if bank_id is None:
 			node_text = self._node_to_text(ntry)
 			bank_id = md5_helper.to_md5(node_text)
 

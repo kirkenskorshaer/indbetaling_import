@@ -32,12 +32,12 @@ class IndbetalingImport():
 			current_bank_file = bank_file.BankFile(config.xml_unused_path + '/' + file)
 			iso20022_document = current_bank_file.document
 
-			logging.info(str(iso20022_document.IBAN) + ' - ' + str(iso20022_document.TtlNetNtryAmt) + ' - ' + file)
+			logging.info(str(iso20022_document.IBAN) + ' - ' + repr(iso20022_document.NbOfNtries) + ' - ' + str(iso20022_document.TtlNetNtryAmt) + ' - ' + file)
 
 			for ntry in iso20022_document.Ntries:
 				self._import_ntry(ntry, iso20022_document, config, connector)
 
-			os.rename(config.xml_unused_path + '/' + file, config.xml_used_path + '/' + file)
+			# os.rename(config.xml_unused_path + '/' + file, config.xml_used_path + '/' + file)
 
 	def _set_log(self):
 		logging.basicConfig(filename='log/' + datetime.datetime.now().strftime('%Y%m%d_%H%M%S') + '.log', level=logging.DEBUG, datefmt='%H:%M:%S')
@@ -52,12 +52,13 @@ class IndbetalingImport():
 			return
 
 		existing_indbetaling_id = indbetaling.get_id(ntry.BankId, connector)
+		ntry_string_number = repr(ntry.NtryRef) + ' / ' + repr(iso20022_document.NbOfNtries)
 
 		if existing_indbetaling_id is not None:
-			logging.info('	indbetaling already exists: ' + ntry.BankId + ' value: ' + str(ntry.Amt))
+			logging.info('	(' + ntry_string_number + ') indbetaling already exists: ' + ntry.BankId + ' value: ' + str(ntry.Amt))
 			return
 
-		logging.info('	importing: ' + ntry.BankId + ' value: ' + str(ntry.Amt))
+		logging.info('	(' + ntry_string_number + ')importing: ' + ntry.BankId + ' value: ' + str(ntry.Amt))
 
 		new_kkadmin_medlemsnr = convert.int_tryparse(ntry.BkTxCdPrtryCd)
 
