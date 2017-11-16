@@ -16,6 +16,7 @@ class Iso20022Ntry():
 		self.BkTxCdDomnFmlySubFmlyCd = None
 		self.BkTxCdPrtryCd = None
 		self.NtryRef = None
+		self.CdtDbtInd = None
 
 		AddtlInfInd = ntry.find('AddtlInfInd', nsmap)
 		bank_id = None
@@ -37,6 +38,9 @@ class Iso20022Ntry():
 		self.BankId = bank_id
 		self.ValDt = datetime.strptime(ntry.find('ValDt/Dt', nsmap).text, '%Y-%m-%d')
 		self.Amt = Decimal(ntry.find('Amt', nsmap).text)
+		self.CdtDbtInd = ntry.find('CdtDbtInd', nsmap).text
+		if self.CdtDbtInd == 'DBIT':
+			self.Amt *= -1
 		self.Ccy = ntry.find('Amt', nsmap).attrib['Ccy']
 		NtryDtls = ntry.find('NtryDtls', nsmap)
 		if NtryDtls is not None:
