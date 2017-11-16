@@ -18,6 +18,8 @@ class ConfigData():
 
 	login_user = 'dbi@kirkenskorshaer.dk'
 
+	threads = 25
+
 	def __init__(self):
 		production_j_n = input('Produktion y/n (n)')
 

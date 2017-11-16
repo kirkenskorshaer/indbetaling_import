@@ -15,7 +15,7 @@ def get_id(bank_id, connector):
 		return None
 
 
-def create(connector, ntry, kilde_code, indbetaling_status_code, campaign_id, sted_id, indbetaling_type_id):
+def create(connector, ntry, ntry_string_number, kilde_code, indbetaling_status_code, campaign_id, sted_id, indbetaling_type_id):
 	query = 'new_indbetalings?$select=new_indbetalingid'
 
 	data = {
@@ -37,18 +37,18 @@ def create(connector, ntry, kilde_code, indbetaling_status_code, campaign_id, st
 	try:
 		indbetaling_id = result_json['new_indbetalingid']
 
-		logging.info('		imported indbetaling to: ' + indbetaling_id)
+		logging.info('		(' + ntry_string_number + ') imported indbetaling to: ' + indbetaling_id)
 	except KeyError:
 		raise ValueError('invalid response: ' + repr(result_json))
 
 	if sted_id is None:
-		logging.warning('		no indbetaling sted found')
+		logging.warning('		(' + ntry_string_number + ') no indbetaling sted found')
 	else:
 		connector.associate('new_indbetalings', indbetaling_id, 'nrq_nrq_indsamlingssted_new_indbetaling_Indsamlingssted', 'nrq_indsamlingssteds', sted_id)
 
 	connector.associate('new_indbetalings', indbetaling_id, 'new_campaign_indbetaling', 'campaigns', campaign_id)
 
 	if indbetaling_type_id is None:
-		logging.warning('		no indbetalingtype found')
+		logging.warning('		(' + ntry_string_number + ') no indbetalingtype found')
 	else:
 		connector.associate('new_indbetalings', indbetaling_id, 'nrq_nrq_indbetalingstype_new_indbetaling_Indbetalingstype', 'nrq_indbetalingstypes', indbetaling_type_id)

@@ -1,40 +1,19 @@
 import requests
-from adal import AuthenticationContext
-from datetime import datetime, timedelta
 import json.decoder
 
 
-class OauthConnect(object):
-	expires_on = None
-	access_token = None
-	token_in_returned_header_is_valid_for_at_least_this_many_seconds = 10
-
-	username = None
-	password = None
-	config = None
+class OauthConnect():
+	def __init__(self, config, data):
+		self.config = config
+		self.data = data
 
 	def get_request_headers(self):
-		max_alowed_datetime = datetime.now() - timedelta(seconds=self.token_in_returned_header_is_valid_for_at_least_this_many_seconds)
-		if self.expires_on is not None and max_alowed_datetime < self.expires_on:
-			return self._create_header_from_token(), None
-
-		return self._make_request_headers()
-
-	def _make_request_headers(self):
-		auth_context = AuthenticationContext(self.config.authorization_endpoint, api_version=None)
-		token_response = auth_context.acquire_token_with_username_password(self.config.base_url, self.username, self.password, self.config.application_id)
-
-		try:
-			self.access_token = token_response['accessToken']
-			self.expires_on = datetime.strptime(token_response['expiresOn'], '%Y-%m-%d %H:%M:%S.%f')
-		except(KeyError):
-			return None, repr(token_response)
-
+		self.data.create_access_token_if_needed(self.config.authorization_endpoint, self.config.base_url, self.config.application_id)
 		return self._create_header_from_token(), None
 
 	def _create_header_from_token(self):
 		return {
-			'Authorization': 'Bearer ' + self.access_token,
+			'Authorization': 'Bearer ' + self.data.access_token,
 			'OData-MaxVersion': '4.0',
 			'OData-Version': '4.0',
 			'Accept': 'application/json',
@@ -82,6 +61,3 @@ class OauthConnect(object):
 		}
 
 		return self.execute_put_query(query, data)
-
-
-connector = OauthConnect()
