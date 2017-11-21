@@ -73,7 +73,7 @@ class Iso20022Ntry():
 					self.BkTxCdPrtryCd = Cd.text
 
 	def _node_to_text(self, node):
-		node_text = tostring(node).decode("utf-8")
+		node_text = tostring(node, pretty_print=False).decode("utf-8")
 		return node_text
 
 	def __str__(self):

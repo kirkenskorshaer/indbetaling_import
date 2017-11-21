@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:camt.054.001.02 camt.054.001.02.xsd">
+	<BkToCstmrDbtCdtNtfctn>
+		<GrpHdr>
+			<MsgId>Z5BQFOJ8SG1B000000001</MsgId>
+			<CreDtTm>2016-11-25T09:45:47</CreDtTm>
+		</GrpHdr>
+		<Ntfctn>
+			<Id>Z5BQFOJ8SG1B000000001</Id>
+			<ElctrncSeqNb>1</ElctrncSeqNb>
+			<CreDtTm>2016-11-25T09:45:47</CreDtTm>
+			<FrToDt>
+				<FrDtTm>2016-11-21T00:00:00</FrDtTm>
+				<ToDtTm>2016-11-25T23:59:59</ToDtTm>
+			</FrToDt>
+			<Acct>
+				<Id>
+					<IBAN>DK5030000011956181</IBAN>
+				</Id>
+				<Ccy>DKK</Ccy>
+				<Nm>Danske Business Pro</Nm>
+				<Ownr>
+					<Nm>KIRKENS KORSHÆR</Nm>
+					<PstlAdr>
+						<StrtNm>NIKOLAJ PLADS</StrtNm>
+						<BldgNb>15</BldgNb>
+						<PstCd>1067</PstCd>
+						<TwnNm>KØBENHAVN K</TwnNm>
+						<Ctry>DK</Ctry>
+					</PstlAdr>
+					<Id>
+						<OrgId>
+							<Othr>
+								<Id>0082883711</Id>
+								<SchmeNm>
+									<Cd>CUST</Cd>
+								</SchmeNm>
+							</Othr>
+						</OrgId>
+					</Id>
+				</Ownr>
+				<Svcr>
+					<FinInstnId>
+						<BIC>DABADKKK</BIC>
+					</FinInstnId>
+				</Svcr>
+			</Acct>
+			<TxsSummry>
+				<TtlNtries>
+					<NbOfNtries>2</NbOfNtries>
+					<TtlNetNtryAmt>36216.50</TtlNetNtryAmt>
+					<CdtDbtInd>CRDT</CdtDbtInd>
+				</TtlNtries>
+				<TtlCdtNtries>
+					<NbOfNtries>62</NbOfNtries>
+					<Sum>36216.50</Sum>
+				</TtlCdtNtries>
+				<TtlDbtNtries>
+					<NbOfNtries>0</NbOfNtries>
+					<Sum>0.00</Sum>
+				</TtlDbtNtries>
+			</TxsSummry>
+			<Ntry>
+				<NtryRef>1</NtryRef>
+				<Amt Ccy="DKK">210.00</Amt>
+				<CdtDbtInd>CRDT</CdtDbtInd>
+				<Sts>BOOK</Sts>
+				<BookgDt>
+					<Dt>2016-11-21</Dt>
+				</BookgDt>
+				<ValDt>
+					<Dt>2016-11-21</Dt>
+				</ValDt>
+				<BkTxCd>
+					<Domn>
+						<Cd>PMNT</Cd>
+						<Fmly>
+							<Cd>RCDT</Cd>
+							<SubFmlyCd>DMCT</SubFmlyCd>
+						</Fmly>
+					</Domn>
+					<Prtry>
+						<Cd>test betaler 1</Cd>
+						<Issr>DBA</Issr>
+					</Prtry>
+				</BkTxCd>
+				<AddtlInfInd>
+					<MsgNmId>id 1</MsgNmId>
+				</AddtlInfInd>
+				<NtryDtls>
+					<TxDtls>
+						<Refs>
+							<MsgId>20161118000000000003645292</MsgId>
+							<EndToEndId>NOTPROVIDED</EndToEndId>
+							<TxId>27502016111807038642980000097018770</TxId>
+						</Refs>
+						<AmtDtls>
+							<InstdAmt>
+								<Amt Ccy="DKK">210.00</Amt>
+							</InstdAmt>
+							<TxAmt>
+								<Amt Ccy="DKK">210.00</Amt>
+							</TxAmt>
+						</AmtDtls>
+						<RltdPties>
+							<Dbtr>
+								<PstlAdr>
+									<Ctry>DK</Ctry>
+									<AdrLine>test betaler 1 addr 1</AdrLine>
+									<AdrLine>test betaler 1 addr 2</AdrLine>
+									<AdrLine>test betaler 1 addr 3</AdrLine>
+									<AdrLine>test betaler 1 addr 4</AdrLine>
+								</PstlAdr>
+							</Dbtr>
+							<Cdtr>
+								<Nm>NOTPROVIDED</Nm>
+							</Cdtr>
+						</RltdPties>
+						<Purp>
+							<Prtry>0019/test betaler 1</Prtry>
+						</Purp>
+						<RltdDts>
+							<AccptncDtTm>2016-11-18T01:01:01</AccptncDtTm>
+						</RltdDts>
+					</TxDtls>
+				</NtryDtls>
+			</Ntry>
+			<Ntry>
+				<NtryRef>2</NtryRef>
+				<Amt Ccy="DKK">210.00</Amt>
+				<CdtDbtInd>CRDT</CdtDbtInd>
+				<Sts>BOOK</Sts>
+				<BookgDt>
+					<Dt>2016-11-21</Dt>
+				</BookgDt>
+				<ValDt>
+					<Dt>2016-11-21</Dt>
+				</ValDt>
+				<BkTxCd>
+					<Domn>
+						<Cd>PMNT</Cd>
+						<Fmly>
+							<Cd>RCDT</Cd>
+							<SubFmlyCd>DMCT</SubFmlyCd>
+						</Fmly>
+					</Domn>
+					<Prtry>
+						<Cd>test betaler x</Cd>
+						<Issr>DBA</Issr>
+					</Prtry>
+				</BkTxCd>
+				<NtryDtls>
+					<TxDtls>
+						<Refs>
+							<MsgId>20161118000000000003645292</MsgId>
+							<EndToEndId>NOTPROVIDED</EndToEndId>
+							<TxId>27502016111807038642980000097018770</TxId>
+						</Refs>
+						<AmtDtls>
+							<InstdAmt>
+								<Amt Ccy="DKK">210.00</Amt>
+							</InstdAmt>
+							<TxAmt>
+								<Amt Ccy="DKK">210.00</Amt>
+							</TxAmt>
+						</AmtDtls>
+						<RltdPties>
+							<Dbtr>
+								<PstlAdr>
+									<Ctry>DK</Ctry>
+									<AdrLine>test betaler x addr 1</AdrLine>
+									<AdrLine>test betaler x addr 2</AdrLine>
+									<AdrLine>test betaler x addr 3</AdrLine>
+									<AdrLine>test betaler x addr 4</AdrLine>
+								</PstlAdr>
+							</Dbtr>
+							<Cdtr>
+								<Nm>NOTPROVIDED</Nm>
+							</Cdtr>
+						</RltdPties>
+						<Purp>
+							<Prtry>0019/test betaler x</Prtry>
+						</Purp>
+						<RltdDts>
+							<AccptncDtTm>2016-11-18T01:01:01</AccptncDtTm>
+						</RltdDts>
+					</TxDtls>
+				</NtryDtls>
+			</Ntry>
+			<Ntry>
+				<NtryRef>2</NtryRef>
+				<Amt Ccy="DKK">210.00</Amt>
+				<CdtDbtInd>CRDT</CdtDbtInd>
+				<Sts>BOOK</Sts>
+				<BookgDt>
+					<Dt>2016-11-21</Dt>
+				</BookgDt>
+				<ValDt>
+					<Dt>2016-11-21</Dt>
+				</ValDt>
+				<BkTxCd>
+					<Domn>
+						<Cd>PMNT</Cd>
+						<Fmly>
+							<Cd>RCDT</Cd>
+							<SubFmlyCd>DMCT</SubFmlyCd>
+						</Fmly>
+					</Domn>
+					<Prtry>
+						<Cd>test betaler x</Cd>
+						<Issr>DBA</Issr>
+					</Prtry>
+				</BkTxCd>
+				<NtryDtls>
+					<TxDtls>
+						<Refs>
+							<MsgId>20161118000000000003645292</MsgId>
+							<EndToEndId>NOTPROVIDED</EndToEndId>
+							<TxId>27502016111807038642980000097018770</TxId>
+						</Refs>
+						<AmtDtls>
+							<InstdAmt>
+								<Amt Ccy="DKK">210.00</Amt>
+							</InstdAmt>
+							<TxAmt>
+								<Amt Ccy="DKK">210.00</Amt>
+							</TxAmt>
+						</AmtDtls>
+						<RltdPties>
+
+
+
+
+							<Dbtr>
+								<PstlAdr>
+									<Ctry>DK</Ctry>
+														<AdrLine>test betaler x addr 1</AdrLine>
+									<AdrLine>test betaler x addr 2</AdrLine>
+									<AdrLine>test betaler x addr 3</AdrLine>
+									<AdrLine>test betaler x addr 4</AdrLine>
+								</PstlAdr>
+							</Dbtr>
+							<Cdtr>
+								<Nm>NOTPROVIDED</Nm>
+							</Cdtr>
+						</RltdPties>
+						<Purp>
+							<Prtry>0019/test betaler x</Prtry>
+						</Purp>
+						<RltdDts>
+							<AccptncDtTm>2016-11-18T01:01:01</AccptncDtTm>
+						</RltdDts>
+					</TxDtls>
+				</NtryDtls>
+			</Ntry>
+		</Ntfctn>
+	</BkToCstmrDbtCdtNtfctn>
+</Document>
