@@ -47,6 +47,7 @@ class IndbetalingImport():
 		logging.info(str(iso20022_document.IBAN) + ' - ' + repr(iso20022_document.NbOfNtries) + ' - ' + str(iso20022_document.TtlNetNtryAmt) + ' - ' + file)
 
 		tasks = []
+		self.imported_indbetaling = []
 		for ntry in iso20022_document.Ntries:
 			ntry_copy = copy.deepcopy(ntry)
 			tasks.append([ntry_copy, iso20022_document, config, connector_data])
@@ -73,6 +74,7 @@ class IndbetalingImport():
 
 		file_time = datetime.datetime.now() - begin_file
 		logging.info('	completed ' + file + ' in: ' + str(file_time) + ' with ' + str(config.threads) + ' thread(s)')
+		logging.info('	imported ' + str(len(self.imported_indbetaling)) + ' indbetaling(s)')
 
 		os.rename(config.xml_unused_path + '/' + file, config.xml_used_path + '/' + file)
 
@@ -121,7 +123,9 @@ class IndbetalingImport():
 			if sted_id is not None:
 				logging.info('		(' + ntry_string_number + ') stedid: ' + sted_name + ' (' + sted_id + ')')
 
-		indbetaling.create(connector, ntry, ntry_string_number, kilde_code, indbetaling_status_code, campaign_id, sted_id, indbetaling_type_id)
+		indbetaling_id = indbetaling.create(connector, ntry, ntry_string_number, kilde_code, indbetaling_status_code, campaign_id, sted_id, indbetaling_type_id)
+
+		self.imported_indbetaling.append(indbetaling_id)
 
 
 if __name__ == "__main__":

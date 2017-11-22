@@ -9,10 +9,16 @@ def get_id(bank_id, connector):
 	if error is not None:
 		raise ValueError(repr(error))
 
+	indbetaling_id = None
+
 	try:
-		return result_json['value'][0].get('new_indbetalingid')
+		# return result_json['value'][0].get('new_indbetalingid')
+		indbetaling_id = result_json['value'][0]['new_indbetalingid']
+		logging.info('		(' + bank_id + ') found: ' + repr(indbetaling_id))
 	except IndexError:
-		return None
+		logging.info('		(' + bank_id + ') not found: ' + repr(result_json))
+
+	return indbetaling_id
 
 
 def create(connector, ntry, ntry_string_number, kilde_code, indbetaling_status_code, campaign_id, sted_id, indbetaling_type_id):
@@ -52,3 +58,5 @@ def create(connector, ntry, ntry_string_number, kilde_code, indbetaling_status_c
 		logging.warning('		(' + ntry_string_number + ') no indbetalingtype found')
 	else:
 		connector.associate('new_indbetalings', indbetaling_id, 'nrq_nrq_indbetalingstype_new_indbetaling_Indbetalingstype', 'nrq_indbetalingstypes', indbetaling_type_id)
+
+	return indbetaling_id

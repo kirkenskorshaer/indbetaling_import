@@ -36,7 +36,7 @@ class OauthConnect():
 		headers, header_error = self.get_request_headers()
 
 		if headers is None:
-			None, header_error
+			return None, header_error
 
 		url = self.config.api_url + query
 		crm_response = None
@@ -50,6 +50,8 @@ class OauthConnect():
 			crm_json = crm_response.json()
 		except json.decoder.JSONDecodeError as message:
 			return None, repr(crm_response)
+
+		# print(repr(crm_response.headers))
 
 		return crm_json, None
 
